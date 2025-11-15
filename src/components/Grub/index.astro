@@ -1,0 +1,138 @@
+<div class="grub">
+    <p class="version">GRUB &nbsp;version 0.0.1~alpha</p>
+    <div class="menu-box">
+        <ul class="entries">
+            <li class="default">davnpsh.dev</li>
+            <li>Source code for davnpsh.dev</li>
+        </ul>
+    </div>
+    <p class="instructions">
+        Use the ↑ and ↓ keys to select which entry is highlighted.<br />
+        Press enter to boot the selected OS.
+    </p>
+    <p class="reminder">
+        The default entry will be executed automatically in <span
+            class="seconds">5</span
+        >s.
+    </p>
+</div>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    .grub {
+        color: white; /* Default color */
+
+        /* Center in the page */
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        /* Boxing */
+        width: 40%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .grub .menu-box {
+        width: 100%;
+        border: 2px white solid;
+        margin: 1rem 0;
+        padding-top: 12px;
+        padding-bottom: 300px;
+    }
+
+    .grub .menu-box .entries {
+        list-style: none;
+    }
+
+    .grub .menu-box .entries li {
+        padding: 1px 10px;
+        margin: 0 3px;
+    }
+
+    .grub .menu-box .entries li.selected {
+        background-color: #989898;
+        color: black;
+        /*font-weight: bold;*/
+    }
+
+    .grub .menu-box .entries li.selected.default::before {
+        content: "*";
+        position: absolute;
+        left: 6px;
+        color: black;
+        /*font-weight: bold;*/
+    }
+
+    .grub .menu-box .entries li.default::before {
+        content: "*";
+        position: absolute;
+        left: 6px;
+        color: white;
+        /*font-weight: bold;*/
+    }
+
+    .grub .version {
+        color: #989898;
+        text-align: center;
+    }
+
+    .grub .instructions {
+        color: #989898;
+    }
+
+    .grub .reminder {
+        color: #989898;
+    }
+</style>
+
+<script>
+    // Update entry selection
+    document.addEventListener("DOMContentLoaded", () => {
+        const entries = Array.from(document.querySelectorAll(".entries li"));
+        let index: number = 0;
+
+        function updateSelection() {
+            entries.forEach((el, i) => {
+                el.classList.toggle("selected", i === index);
+            });
+        }
+
+        updateSelection(); // Initial selection
+
+        document.addEventListener("keydown", (event) => {
+            if (event.repeat) return;
+
+            if (event.key === "ArrowUp") {
+                event.preventDefault();
+                index = (index - 1 + entries.length) % entries.length;
+                updateSelection();
+            }
+
+            if (event.key === "ArrowDown") {
+                event.preventDefault();
+                index = (index + 1) % entries.length;
+                updateSelection();
+            }
+
+            if (event.key === "Enter") {
+                event.preventDefault();
+                boot();
+            }
+        });
+
+        function boot() {
+            if (index == 0) {
+                // TODO: continue to website
+            } else if (index == 1) {
+                window.open("https://github.com/davnpsh/davnpsh.dev", "_blank");
+            }
+        }
+    });
+</script>

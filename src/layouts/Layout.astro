@@ -13,10 +13,28 @@
 </html>
 
 <style>
+    @font-face {
+        font-family: "Terminus";
+        src: url("/fonts/Terminus/TerminusTTF-4.49.3.ttf") format("truetype");
+        font-weight: normal;
+        font-style: normal;
+    }
+
     html,
     body {
         margin: 0;
         width: 100%;
         height: 100%;
+
+        /* Font */
+        font-family: "Terminus", monospace;
+        font-size: 18px;
+        user-select: none;
+        -webkit-font-smoothing: none;
+        font-smooth: never;
+        image-rendering: pixelated;
+
+        /* Navigation */
+        cursor: none;
     }
 </style>
