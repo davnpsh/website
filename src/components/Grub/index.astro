@@ -34,7 +34,7 @@
         transform: translate(-50%, -50%);
 
         /* Boxing */
-        width: 40%;
+        width: 30%;
         display: flex;
         flex-direction: column;
     }
@@ -85,18 +85,34 @@
 
     .grub .instructions {
         color: #989898;
+        width: fit-content; /* ensures the box shrinks to its content */
+        margin: 0 auto; /* centers the box itself */
+        text-align: left;
     }
 
     .grub .reminder {
+        margin-left: 3px;
         color: #989898;
     }
 </style>
 
 <script>
-    // Update entry selection
     document.addEventListener("DOMContentLoaded", () => {
         const entries = Array.from(document.querySelectorAll(".entries li"));
+        const reminderMessage = document.querySelector(".reminder");
+        const secondsBox = document.querySelector(".seconds");
+
         let index: number = 0;
+        let countdown: number = 5; // 5 secs default
+        let timerActive: boolean = true;
+
+        function boot(selected: number) {
+            if (selected == 0) {
+                // TODO: continue to website
+            } else if (selected == 1) {
+                window.open("https://github.com/davnpsh/davnpsh.dev", "_blank");
+            }
+        }
 
         function updateSelection() {
             entries.forEach((el, i) => {
@@ -106,6 +122,21 @@
 
         updateSelection(); // Initial selection
 
+        // Countdown
+        const interval = setInterval(() => {
+            if (!timerActive) return;
+
+            countdown--;
+            secondsBox!.textContent = countdown.toString();
+
+            if (countdown == 0) {
+                clearInterval(interval);
+                timerActive = false;
+                boot(0);
+            }
+        }, 1000);
+
+        // Update entry selection
         document.addEventListener("keydown", (event) => {
             if (event.repeat) return;
 
@@ -123,16 +154,8 @@
 
             if (event.key === "Enter") {
                 event.preventDefault();
-                boot();
+                boot(index);
             }
         });
-
-        function boot() {
-            if (index == 0) {
-                // TODO: continue to website
-            } else if (index == 1) {
-                window.open("https://github.com/davnpsh/davnpsh.dev", "_blank");
-            }
-        }
     });
 </script>
