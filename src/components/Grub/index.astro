@@ -1,18 +1,18 @@
 <div class="grub">
-    <p class="version">GRUB &nbsp;version 0.0.1~alpha</p>
-    <div class="menu-box">
+    <p class="version fade-step">GRUB &nbsp;version 0.0.1~alpha</p>
+    <div class="menu-box fade-step">
         <ul class="entries">
             <li class="default">davnpsh.dev</li>
             <li>Source code for davnpsh.dev</li>
         </ul>
     </div>
-    <p class="instructions">
+    <p class="instructions fade-step">
         Use the ↑ and ↓ keys to select which entry is highlighted.<br />
         Press enter to boot the selected OS.
     </p>
-    <p class="reminder">
+    <p class="reminder fade-step">
         The default entry will be executed automatically in <span
-            class="seconds">5</span
+            class="seconds">10</span
         >s.
     </p>
 </div>
@@ -94,6 +94,34 @@
         margin-left: 3px;
         color: #989898;
     }
+
+    /* Appearing on screen */
+    .fade-step {
+        opacity: 0;
+        animation: fadeIn 0s linear forwards;
+    }
+
+    .fade-step:nth-child(1) {
+        animation-delay: 100ms;
+    }
+    .fade-step:nth-child(2) {
+        animation-delay: 150ms;
+    }
+    .fade-step:nth-child(3) {
+        animation-delay: 200ms;
+    }
+    .fade-step:nth-child(4) {
+        animation-delay: 250ms;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
 </style>
 
 <script>
@@ -103,7 +131,7 @@
         const secondsBox = document.querySelector(".seconds");
 
         let index: number = 0;
-        let countdown: number = 5; // 5 secs default
+        let countdown: number = 10; // 10 secs default
 
         function boot(selected: number) {
             if (selected == 0) {
