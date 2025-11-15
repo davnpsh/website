@@ -1,0 +1,79 @@
+---
+import Base from "./base.astro";
+---
+
+<Base title="davnpsh.dev"
+    ><div slot="description">Welcome to my website!</div>
+    <div class="entries context" slot="entries">
+        <ul>
+            <li class="default">About</li>
+            <li>Projects</li>
+            <li>Contact</li>
+        </ul>
+    </div>
+</Base>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    .entries {
+        margin-top: 15px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .entries ul {
+        list-style: none;
+        width: 50%;
+    }
+
+    .entries ul li.selected {
+        background-color: #cc241d;
+        color: #c2c2c2;
+    }
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const entries = Array.from(document.querySelectorAll(".entries li"));
+
+        let index: number = 0;
+
+        function visit(selected: number) {}
+
+        function updateSelection() {
+            entries.forEach((el, i) => {
+                el.classList.toggle("selected", i === index);
+            });
+        }
+
+        updateSelection(); // Initial selection
+
+        // Update entry selection
+        document.addEventListener("keydown", (event) => {
+            if (event.repeat) return;
+
+            if (event.key === "ArrowUp") {
+                event.preventDefault();
+                index = (index - 1 + entries.length) % entries.length;
+                updateSelection();
+            }
+
+            if (event.key === "ArrowDown") {
+                event.preventDefault();
+                index = (index + 1) % entries.length;
+                updateSelection();
+            }
+
+            if (event.key === "Enter") {
+                event.preventDefault();
+                visit(index);
+            }
+        });
+    });
+</script>

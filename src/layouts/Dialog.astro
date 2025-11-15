@@ -1,13 +1,17 @@
 <div id="dialog">
-    <div class="bar instructions fade-step">
+    <div class="bar top instructions fade-step">
         Use the ↑ and ↓ keys to navigate. Use &lt;TAB&gt; to switch between
         contexts. Press &lt;ESC&gt; at any time to return to the main menu.
     </div>
-    <slot class="fade-step" />
-    <div class="bar"></div>
+    <div class="fade-step content"><slot /></div>
+    <div class="bar bottom"></div>
 </div>
 
 <style>
+    * {
+        box-sizing: border-box;
+    }
+
     body {
         background-color: #6a9fb5;
     }
@@ -15,6 +19,7 @@
     #dialog {
         width: 100%;
         height: 100vh;
+        /*position: relative;*/
     }
 
     .bar {
@@ -24,11 +29,11 @@
         background-color: #c2c2c2;
     }
 
-    .bar:nth-child(1) {
+    .bar.top {
         padding-left: 5px;
     }
 
-    .bar:nth-child(2) {
+    .bar.bottom {
         bottom: 0;
         visibility: hidden;
     }
@@ -39,11 +44,11 @@
         animation: fadeIn 0s linear forwards;
     }
 
-    .fade-step:nth-child(1) {
+    .fade-step.instructions {
         animation-delay: 100ms;
     }
-    .fade-step:nth-child(2) {
-        animation-delay: 150ms;
+    .fade-step.content {
+        animation-delay: 250ms;
     }
 
     @keyframes fadeIn {
