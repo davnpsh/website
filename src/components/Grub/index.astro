@@ -104,7 +104,6 @@
 
         let index: number = 0;
         let countdown: number = 5; // 5 secs default
-        let timerActive: boolean = true;
 
         function boot(selected: number) {
             if (selected == 0) {
@@ -122,23 +121,27 @@
 
         updateSelection(); // Initial selection
 
-        // Countdown
+        // Start countdown
         const interval = setInterval(() => {
-            if (!timerActive) return;
-
             countdown--;
             secondsBox!.textContent = countdown.toString();
 
             if (countdown == 0) {
-                clearInterval(interval);
-                timerActive = false;
+                stopCountdown();
                 boot(0);
             }
         }, 1000);
 
+        function stopCountdown() {
+            clearInterval(interval);
+            reminderMessage!.style.visibility = "hidden";
+        }
+
         // Update entry selection
         document.addEventListener("keydown", (event) => {
             if (event.repeat) return;
+
+            stopCountdown();
 
             if (event.key === "ArrowUp") {
                 event.preventDefault();
