@@ -58,16 +58,20 @@ document.addEventListener("DOMContentLoaded", () => {
     if (event.code === "Space") {
       event.preventDefault();
 
-      // Check if the current context has a checkbox
-      let hasCheckbox =
-        !!contexts[activeContextIndex].querySelector(".checkbox");
+      const checkbox = contexts[activeContextIndex].querySelector(".checkbox");
 
-      if (!hasCheckbox) return;
+      if (!checkbox) return;
 
-      // Execute custom logic behind the checkbox, if any
-      if (typeof spaceFunction === "function") {
-        spaceFunction();
-      }
+      const span = checkbox.querySelector("span");
+      const id = span.id;
+
+      let value = localStorage.getItem(id) === "true";
+
+      value = !value;
+
+      localStorage.setItem(id, value.toString());
+
+      span.textContent = value ? "[x]" : "[ ]";
     }
 
     // --- Enter = select ---
@@ -91,5 +95,18 @@ document.addEventListener("DOMContentLoaded", () => {
       activeEntryIndex = (activeEntryIndex + 1) % entries.length;
       updateEntrySelection();
     }
+  });
+
+  // Checkboxes variables initialization
+  document.querySelectorAll(".checkbox").forEach((box) => {
+    const span = box.querySelector("span");
+    if (!span) return;
+
+    const id = span.id;
+    if (!id) return;
+
+    const value = localStorage.getItem(id) === "true";
+
+    span.textContent = value ? "[x]" : "[ ]";
   });
 });

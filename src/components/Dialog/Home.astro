@@ -31,35 +31,9 @@ import "./styles.css";
     }
 </style>
 
-<script is:inline>
-    function spaceFunction() {
-        const option = document.querySelector("#disable-bootloader");
-
-        // Load current state (default false)
-        let disabled = localStorage.getItem("bootloaderDisabled") === "true";
-
-        // Toggle it
-        disabled = !disabled;
-
-        // Save new state
-        localStorage.setItem("bootloaderDisabled", disabled.toString());
-
-        // Update UI
-        option.textContent = disabled ? "[x]" : "[ ]";
-    }
-
-    document.addEventListener("DOMContentLoaded", () => {
-        // Disable bootloader initial check
-        const option = document.querySelector("#disable-bootloader");
-        if (option) {
-            const disabled =
-                localStorage.getItem("bootloaderDisabled") === "true";
-            option.textContent = disabled ? "[x]" : "[ ]";
-        }
-    });
-</script>
+<script is:inline></script>
 <script src="./script.js"></script>
-<script>
+<!-- <script>
     document.addEventListener("DOMContentLoaded", () => {
         function visit(selected: number) {
             // Fade
@@ -91,4 +65,4 @@ import "./styles.css";
             }, 200);
         }
     });
-</script>
+</script> -->

@@ -14,7 +14,7 @@ import Grub from "../components/Grub/index.astro";
 </style>
 
 <script>
-    const disabled = localStorage.getItem("bootloaderDisabled") === "true";
+    const disabled = localStorage.getItem("disable-bootloader") === "true";
 
     if (disabled) {
         window.location.href = "/home";
