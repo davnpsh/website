@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // An active context is the current highlighted option on screen
   function setActiveContext(index) {
     activeContextIndex = index % contexts.length;
-    const items = contexts[activeContextIndex].querySelectorAll("li, .option");
+    const items = contexts[activeContextIndex].querySelectorAll("li, .input");
 
     document
       .querySelectorAll(".selected")
@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Update selection for a list of entries
   function updateEntrySelection() {
     contexts[activeContextIndex]
-      .querySelectorAll("li, .option")
+      .querySelectorAll("li, .input")
       .forEach((el, i) =>
         el.classList.toggle("selected", i === activeEntryIndex),
       );
@@ -86,20 +86,18 @@ document.addEventListener("DOMContentLoaded", () => {
     // --- Enter = select ---
     if (event.key === "Enter") {
       event.preventDefault();
-      if (hasEntries) visit(activeEntryIndex);
+      // if (hasEntries) visit(activeEntryIndex);
     }
 
-    if (!hasEntries) return;
-
     // --- Up / Down navigation inside list of entries ---
-    if (event.key === "ArrowUp") {
+    if (event.key === "ArrowUp" && hasEntries) {
       event.preventDefault();
       activeEntryIndex =
         (activeEntryIndex - 1 + entries.length) % entries.length;
       updateEntrySelection();
     }
 
-    if (event.key === "ArrowDown") {
+    if (event.key === "ArrowDown" && hasEntries) {
       event.preventDefault();
       activeEntryIndex = (activeEntryIndex + 1) % entries.length;
       updateEntrySelection();

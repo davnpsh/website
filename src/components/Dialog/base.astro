@@ -8,7 +8,7 @@ const { title = "default", text = "default", width = "450px" } = Astro.props;
             <div class="title">{title}</div>
             <slot name="description" />
             <slot name="entries" class="entries" />
-            <slot name="options" />
+            <slot name="form" />
         </div>
         <slot />
     </div>

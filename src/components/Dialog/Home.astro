@@ -5,17 +5,17 @@ import "./styles.css";
 
 <Base title="davnpsh.dev"
     ><div slot="description">Welcome to my website!</div>
-    <div class="entries context" slot="entries">
+    <div class="context entries" slot="entries">
         <ul>
-            <li class="default">About</li>
-            <li>Projects</li>
-            <li>Blog</li>
-            <li>Contact</li>
+            <li class="default" data-url="/about">About</li>
+            <li data-url="/projects">Projects</li>
+            <li data-url="https://blog.davnpsh.dev">Blog</li>
+            <li data-url="/contact">Contact</li>
         </ul>
     </div>
-    <div slot="options" class="options">
+    <div slot="form" class="form">
         <div class="context">
-            <p class="option checkbox">
+            <p class="input checkbox">
                 <span id="disable-bootloader">[ ]</span>&nbsp;Disable bootloader
             </p>
         </div>
@@ -23,7 +23,7 @@ import "./styles.css";
 </Base>
 
 <style>
-    .options {
+    .form {
         width: 100%;
         display: flex;
         justify-content: center;
@@ -31,17 +31,10 @@ import "./styles.css";
     }
 </style>
 
-<script is:inline></script>
 <script src="./script.js"></script>
 <!-- <script>
     document.addEventListener("DOMContentLoaded", () => {
         function visit(selected: number) {
-            // Fade
-            const box = document.querySelector(".content");
-            const bar = document.querySelector(".bar.bottom");
-
-            box!.style.visibility = "hidden";
-            bar!.style.visibility = "visible";
 
             // Go
             let url: string;

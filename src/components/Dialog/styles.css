@@ -27,7 +27,7 @@
 }
 
 /* --- Options --- */
-.option.selected {
+.input.selected {
     background-color: #cc241d;
     color: #c2c2c2;
 }
