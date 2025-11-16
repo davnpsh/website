@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
       .querySelectorAll(".selected")
       .forEach((el) => el.classList.remove("selected"));
 
-    items[0]?.classList.add("selected");
+    items[activeIndex]?.classList.add("selected");
   }
 
   // Update highlight
@@ -54,8 +54,20 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  // Guarantee a default selection
+  contexts.some((ctx, i) => {
+    const items = Array.from(ctx.querySelectorAll("li, .input"));
+    const defIndex = items.findIndex((el) => el.classList.contains("default"));
+
+    if (defIndex !== -1) {
+      activeContextIndex = i;
+      activeIndex = defIndex;
+      return true; // stop
+    }
+  });
+
   // Set initial context
-  setActiveContext(0);
+  setActiveContext(activeContextIndex);
 
   // Event listeners for navigation
   document.addEventListener("keydown", (event) => {
