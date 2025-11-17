@@ -3,12 +3,11 @@ import Base from "./base.astro";
 import "./styles.css";
 
 const { id, project, totalProjects } = Astro.props;
-const formattedDescription = project.description.replace(/\n/g, "<br>");
 ---
 
 <Base title={project.name} width="650px">
     <p class="order" slot="order">{id}/{totalProjects}</p>
-    <div slot="description" set:html={formattedDescription} />
+    <div slot="description" set:html={project.description} />
     <div slot="image" class="image_container">
         {
             project.image_path && (

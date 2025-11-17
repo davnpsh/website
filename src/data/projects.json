@@ -8,9 +8,16 @@
   },
   {
     "name": "automata",
-    "description": "An npm package that provides a way to create and manipulate finite automatons based on regular expressions. This project also features a webpage in which the user can create, visualize and test an automaton based on a reg-ex.",
+    "description": "<b>automata</b> is a npm package that provides a way to create and manipulate finite automatons based on regular expressions in JavaScript. This project also features a webpage in which the user can create, visualize and test an automaton based on a reg-ex.",
     "image_path": "/images/automaton.png",
     "page_link": "https://automata-demo.vercel.app/",
     "source_code_link": "https://github.com/davnpsh/automata"
+  },
+  {
+    "name": "nrpp",
+    "description": "<b>nrpp</b> (Non-recursive Predictive Parser) is a npm package that takes a grammar and generates a First, Follow sets, along with a parsing table (M table). This project also features a webpage in which the user can upload a .txt file with a grammar in it (E -> E + T, E -> T, T -> (id), etc.) and obtain both mentioned sets and the table. With this tool you can also test strings against the grammar.",
+    "image_path": "/images/nrpp.png",
+    "page_link": "https://nrpp-demo.vercel.app/",
+    "source_code_link": "https://github.com/davnpsh/nrpp"
   }
 ]
