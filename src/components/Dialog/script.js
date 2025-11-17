@@ -81,6 +81,12 @@ document.addEventListener("DOMContentLoaded", () => {
     // Check if the current context is a nav
     const hasNav = contexts[activeContextIndex].classList.contains("nav");
 
+    // --- ESC = return to home ---
+    if (event.key === "Escape") {
+      event.preventDefault();
+      window.location.href = "/home";
+    }
+
     // --- TAB = rotate context ---
     if (event.key === "Tab") {
       event.preventDefault();
