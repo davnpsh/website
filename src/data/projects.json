@@ -1,0 +1,9 @@
+[
+  {
+    "name": "homelab",
+    "description": "Setup and configuration files for my personal home server and VPS. I used Ansible playbooks to be able to replicate this setup in case I replace the hardware for some reason. I should probably use Nix too.",
+    "image_path": "",
+    "page_link": "",
+    "source_code_link": "https://github.com/davnpsh/homelab"
+  }
+]

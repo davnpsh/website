@@ -1,0 +1,40 @@
+---
+import Base from "./base.astro";
+import "./styles.css";
+
+const { id, project, totalProjects } = Astro.props;
+const formattedDescription = project.description.replace(/\n/g, "<br>");
+---
+
+<Base title={project.name} width="650px">
+    <p class="order" slot="order">{id}/{totalProjects}</p>
+    <div slot="description" set:html={formattedDescription} />
+    <div class="context nav" slot="nav">
+        <ul>
+            {
+                id > 1 ? (
+                    <li data-url={`/project/${id - 1}`}>&lt;</li>
+                ) : (
+                    <>&nbsp;</>
+                )
+            }
+            <li data-url="/home">&lt;Home&gt;</li>
+            {
+                id < totalProjects ? (
+                    <li data-url={`/project/${id + 1}`}>&gt;</li>
+                ) : (
+                    <>&nbsp;</>
+                )
+            }
+        </ul>
+    </div>
+</Base>
+
+<style>
+    .order {
+        text-align: center;
+        margin: 15px 0;
+    }
+</style>
+
+<script src="./script.js"></script>

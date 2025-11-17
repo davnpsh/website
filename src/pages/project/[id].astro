@@ -1,0 +1,22 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import DialogLayout from "../../layouts/Dialog.astro";
+import Dialog from "../../components/Dialog/Project.astro";
+import projects from "../../data/projects.json";
+
+export async function getStaticPaths() {
+    return projects.map((project, index) => ({
+        params: { id: (index + 1).toString() },
+        props: { project },
+    }));
+}
+
+const { id } = Astro.params;
+const { project } = Astro.props;
+---
+
+<Layout
+    ><DialogLayout>
+        <Dialog id={id} project={project} totalProjects={projects.length} />
+    </DialogLayout>
+</Layout>
