@@ -49,7 +49,7 @@ const { id, project, totalProjects } = Astro.props;
                     <>&nbsp;</>
                 )
             }
-            <li data-url="/home">&lt;Home&gt;</li>
+            <li data-url="/home">&lt; Home &gt;</li>
             {
                 id < totalProjects ? (
                     <li data-url={`/project/${parseInt(id) + 1}`}>&gt;</li>
