@@ -1,46 +1,45 @@
-# Astro Starter Kit: Basics
+# Website
+
+Source code and resources of my personal site.
+
+## Develop
+
+Install **Node** and **npm**. Then, install dependencies with:
 
 ```sh
-npm create astro@latest -- --template basics
+npm install
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Start local dev server at `localhost:4321` with:
 
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
+```sh
+npm run dev
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+## Build
 
-## 🧞 Commands
+### With `npm`:
 
-All commands are run from the root of the project, from a terminal:
+```sh
+npm run build
+```
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+### With `docker`:
 
-## 👀 Want to learn more?
+Build the Docker image:
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+```sh
+docker build -t astro-builder .
+```
+
+**NOTE:** This is to create a builder container, which is just basically a Node wrapper for not having to install and manage different versions of it.
+
+Then, build:
+
+```sh
+docker run --rm -v .:/app astro-builder
+```
+
+## Serve
+
+The generated static files are inside `./dist`. Serve using a proxy of some kind.
