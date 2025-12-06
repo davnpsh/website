@@ -4,20 +4,6 @@
     box-sizing: border-box;
 }
 
-/* --- Project img --- */
-
-.image_container {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-}
-
-.project_img {
-    margin: 10px 0;
-    height: 200px;
-    max-height: 200px;
-}
-
 /* --- Entries (basically, a list of options) --- */
 .entries {
     margin-top: 15px;
