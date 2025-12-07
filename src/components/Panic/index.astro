@@ -7,11 +7,11 @@
         box-sizing: border-box;
         scrollbar-width: none;
     }
-    
+
     ::-webkit-scrollbar {
         display: none;
     }
-    
+
     #boot-screen {
         background-color: black;
         color: white;
@@ -23,7 +23,7 @@
         scrollbar-width: none;
         -ms-overflow-style: none;
     }
-    
+
     #boot-screen::-webkit-scrollbar {
         display: none;
     }
@@ -46,5 +46,56 @@
 </style>
 
 <script>
+    import logs from "/logs/panic.txt?raw";
+    
+    const lines = logs.split("\n");
 
+    const logsBox = document.getElementById("boot-screen");
+    const container = document.getElementById("text");
+    const caret = document.getElementById("caret");
+
+    // ---
+    // Prevent user scrolling
+    window.addEventListener("scroll", function () {
+        window.scrollTo(0, 0);
+    });
+    
+    window.addEventListener(
+        "wheel",
+        function (e) {
+            e.preventDefault();
+        },
+        { passive: false },
+    );
+
+    window.addEventListener(
+        "touchmove",
+        function (e) {
+            e.preventDefault();
+        },
+        { passive: false },
+    );
+    // ---
+    
+    function add(log: string) {
+        container!.textContent += log + "\n";
+    }
+    
+    let index = 0;
+
+    function printLogs() {
+        if (index >= lines.length) return;
+
+        add(lines[index]);
+
+        logsBox!.scrollTop = logsBox!.scrollHeight;
+
+        index++;
+
+        let delay = 0;
+
+        setTimeout(printLogs, delay);
+    }
+    
+    printLogs();
 </script>

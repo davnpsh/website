@@ -1,0 +1,24 @@
+[  142.318935] Kernel panic - not syncing: Fatal exception in interrupt
+[  142.318962] CPU: 2 PID: 0 Comm: swapper/2 Tainted: G        W         6.1.0-simkernel #42
+[  142.319004] Hardware name: GenericBoard-X1 (DT)
+[  142.319035] Call trace:
+[  142.319047]  dump_backtrace+0x88/0xbc
+[  142.319068]  show_stack+0x20/0x28
+[  142.319088]  dump_stack_lvl+0x68/0x84
+[  142.319109]  dump_stack+0x18/0x20
+[  142.319129]  panic+0x150/0x314
+[  142.319148]  nmi_panic+0x3c/0x3c
+[  142.319167]  irq_exit+0x110/0x134
+[  142.319186]  __handle_domain_irq+0x6c/0xc8
+[  142.319206]  gic_handle_irq+0x88/0x94
+[  142.319226]  el1_irq+0xbc/0x140
+[  142.319249]  simulate_faulty_driver_isr+0x2c/0x54 [faultydrv]
+[  142.319279]  0xffff0000080a0000
+[  142.319300] 
+[  142.319312] LR: simulate_faulty_driver_isr+0x24/0x54 [faultydrv]
+[  142.319340] sp : ffff800009c03e10
+[  142.319359] pc : ffff00000058b4a8
+[  142.319374] 
+[  142.319385] Code: d2800001 f9400022 d2800023 b9000043 (f9000041)
+[  142.319416] 
+[  142.319427] ---[ end Kernel panic - not syncing: 404 not found ]---
