@@ -51,7 +51,6 @@
 [    0.000000] pcpu-alloc: s20608 r8192 d32640 u61440 alloc=15*4096
 [    0.000000] pcpu-alloc: [0] 0 [0] 1 [0] 2 [0] 3
 [    0.000000] Built 1 zonelists in Zone order, mobility grouping on.  Total pages: 977192
-[    0.000000] Kernel command line: sched_enable_hmp=1 sched_enable_power_aware=1 <DOMAIN>=qcom user_debug=31 <DOMAIN>=0x237 <DOMAIN>=3 lpm_levels.sleep_disabled=1 cma=16M@0-0xffffffff coherent_pool=2M enforcing=0 <DOMAIN>=permissive lpm_levels.sleep_disabled=1 cma=16M@0-0xffffffff coherent_pool=2M <DOMAIN>=<DOMAIN> <DOMAIN>=enforcing <DOMAIN>=orange <DOMAIN>=s1 oemandroidboot.s1boot=1299-4832_S1_Boot_MSM8996_LA2.0_O_204 <DOMAIN>=BH9010D472 ta_info=1,16,256 startup=0x00000001 warmboot=0x00000000 <DOMAIN>=<HEXSEQ> <DOMAIN>=0000:<HEXSEQ>,0000:<HEXSEQ> <DOMAIN>=0 oemandroidboot.babe09a9=00 oemandroidboot.babe08b3=50000000 oemandroidboot.babe137e=16 <DOMAIN>=0x00000003 <DOMAIN>=4 lcdid_adc=0x2B42 display_status=on <DOMAIN>=msm
 [    0.000000] PID hash table entries: 4096 (order: 3, 32768 bytes)
 [    0.000000] Dentry cache hash table entries: 524288 (order: 10, 4194304 bytes)
 [    0.000000] Inode-cache hash table entries: 262144 (order: 9, 2097152 bytes)
