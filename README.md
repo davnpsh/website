@@ -29,7 +29,7 @@ npm run build
 Build the Docker image:
 
 ```sh
-docker build -t astro-builder .
+docker build -t website-builder .
 ```
 
 **NOTE to myself:** This is to create a builder container, which is just basically a Node wrapper for not having to install and manage different versions of it.
@@ -37,7 +37,7 @@ docker build -t astro-builder .
 Then, build:
 
 ```sh
-docker run --rm -v .:/app astro-builder
+docker run --rm -v .:/app website-builder
 ```
 
 ## Serve
