@@ -4,6 +4,8 @@ Source code and resources of my personal site.
 
 ## Develop
 
+Since deployment can happen on Vercel, development should happen on `dev` branch.
+
 Install **Node** and **npm**. Then, install dependencies with:
 
 ```sh
@@ -26,7 +28,7 @@ npm run build
 
 ### With `docker`:
 
-Build the Docker image:
+First, build the Docker image:
 
 ```sh
 docker build -t website-builder .
@@ -34,7 +36,7 @@ docker build -t website-builder .
 
 **NOTE to myself:** This is to create a builder container, which is just basically a Node wrapper for not having to install and manage different versions of it.
 
-Then, build:
+Then, build the website itself:
 
 ```sh
 docker run --rm -v ./dist:/app/dist website-builder
