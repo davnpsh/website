@@ -70,3 +70,11 @@
         visibility: visible;
     }
 </style>
+
+<script>
+    window.addEventListener("pageshow", () => {
+        document
+            .querySelectorAll(".navigating-away")
+            .forEach((el) => el.classList.remove("navigating-away"));
+    });
+</script>
